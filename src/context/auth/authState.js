@@ -83,9 +83,9 @@ const AuthState = props => {
                     payload: response.data
                 })
             }
-            console.clear();
+            // console.clear();
         } catch (error) {
-            console.clear();
+            // console.clear();
         }
     }
 

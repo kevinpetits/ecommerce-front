@@ -36,9 +36,11 @@ const Products = () => {
   useEffect(() => {
     getProducts();
     getCategories();
-   
+    getCarrito();
     //eslint-disable-next-line
   }, [token]);
+
+  
 
   return (
     <>

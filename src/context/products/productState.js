@@ -112,7 +112,6 @@ const ProductState = (props) => {
     if (token) {
       try {
         const response = await clientAxios.get("/cart");
-        console.log(response.data);
         if (response.data.length === 0 && state.cart.length !== 0) {
           await addToCartFromLocalStorage();
         } else {
@@ -127,21 +126,21 @@ const ProductState = (props) => {
             } = response.data[i];
             arr.push({ id, name, price, quantity, associatedModel });
           }
-          if (arr.length > 1) {
+          // if (arr.length > 1) {
             dispatch({
               type: ADD_TO_CART_FROM_SERVER,
               payload: arr,
             });
-          } else if (arr.length === 1) {
-            const params = {
-              product: arr[0],
-              quantity: arr[0].quantity,
-            };
-            dispatch({
-              type: ADD_TO_CART,
-              payload: params,
-            });
-          }
+          // } else if (arr.length === 1) {
+          //   const params = {
+          //     product: arr[0],
+          //     quantity: arr[0].quantity,
+          //   };
+          //   dispatch({
+          //     type: ADD_TO_CART,
+          //     payload: params,
+          //   });
+          // }
         }
       } catch (error) {}
     }
@@ -325,7 +324,9 @@ const ProductState = (props) => {
 
   useEffect(() => {
     if (state.cart.length !== 0) {
+      if(!token){
       updateStorageCart();
+      }
     }
     //eslint-disable-next-line
   }, [state.cart]);

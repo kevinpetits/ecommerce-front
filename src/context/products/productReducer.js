@@ -37,6 +37,7 @@ const ProductReducer = (state, action) => {
         categories: action.payload
       }
     case ADD_TO_CART_FROM_SERVER:
+      console.log(action.payload);
       return {
         ...state,
         cart: action.payload,
