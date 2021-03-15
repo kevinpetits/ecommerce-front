@@ -112,6 +112,7 @@ const ProductState = (props) => {
     if (token) {
       try {
         const response = await clientAxios.get("/cart");
+        console.log(response.data);
         if (response.data.length === 0 && state.cart.length !== 0) {
           await addToCartFromLocalStorage();
         } else {
